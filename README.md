@@ -8,3 +8,4 @@ Functionalities - You can:
   - Make a bid
   - Buy now
   - Search for item
+To start the app just dowload project and run main.py
