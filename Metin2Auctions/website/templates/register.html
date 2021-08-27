@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{%block title%} Register {%endblock%}
+{%block content%} 
+{% if success == 'error' %}
+<form method="POST">
+    <h1>Register account</h1>
+    <label>Login: <input name="login" type="text" placeholder="Login"></label>
+    <label>Password: <input name="password" type="password" placeholder="Password"></label>
+    <label>Confirm password: <input name="password_chck" type="password" placeholder="Confirm password"></label>
+    <label>Email: <input name="email" type="email" placeholder="Email"></label>
+    <button type="submit">Register</button>
+</form>
+{%endif%}
+{%endblock%}

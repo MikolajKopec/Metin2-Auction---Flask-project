@@ -1,0 +1,50 @@
+@import "variables.scss";
+@media only screen and (max-width:767px){
+    .bonus{
+        flex-direction: column;
+        input{
+            text-align: center;
+        }
+    }
+}
+@media only screen and (min-width:768px){
+    .bonus{
+        flex-direction: row;
+    }
+}
+::placeholder{
+    color: $item-desc-color;
+    opacity: 1;
+}
+.bonus_names{
+    display: none;
+    flex-direction: column;
+    flex-basis: 10%;
+    position: relative;
+    .bonus{
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        input{
+            border: none;
+        }
+    }
+    @include metin_desc;
+}
+input{
+    color:$item-desc-color;
+    /* -webkit-text-stroke: black 0.2px; */
+    font-size: 14px;
+    text-shadow: -1px -1px 0.1px #2e2e2e, -1px 1px 0.1px #2e2e2e, 1px 1px 0.1px #2e2e2e, 1px -1px 0.1px #2e2e2e, -1px 0px 0.1px #2e2e2e, 1px 0px 0.1px #2e2e2e, 0px 1px 0.1px #2e2e2e, 0px -1px 0.1px #2e2e2e;
+    font-family: Arial;
+    font-weight: bold;
+}
+.more{
+    @include metin_desc;
+    color: $item-desc-color;
+    margin-top: 40px;
+    textarea{
+        border: none;
+    }
+}

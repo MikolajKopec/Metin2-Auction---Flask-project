@@ -1,0 +1,38 @@
+@import "variables.scss";
+img{
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.auction-container{
+    color: white;
+    -webkit-text-stroke: black 0.15px;
+    width: 80%;
+    @include metin_desc;
+    @include center;
+    flex-direction: row;
+    padding: $basic-section-padding;
+    margin: $basic-section-padding;
+    .auction-img{
+        width: 40%;
+        padding:0 10px;
+    }
+    .auction-description{
+        color: $item-desc-color;
+    }
+    .auction-describe{
+        width: 60%;
+        @include center;
+        text-align: center;
+        .auction-price{
+            .buy-now{
+                color: $third-color;
+            }
+        }
+        .auction-action{
+            @include center;
+        }
+    }
+    border: solid black 1px;
+}

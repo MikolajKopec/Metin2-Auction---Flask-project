@@ -1,0 +1,63 @@
+$base-color:#0F0A0A;
+$primary-color:#EFC69B;
+$third-color:#A44A3F;
+$fourth-color:#70A37F;
+$fourth-color:#7F95D1;
+$item-desc-color:#89b88d;
+$success:#32c259;
+$error:#cc4021;
+$main-fontsize:18px;
+$basic-item-padding:10px 0;
+$basic-section-padding:30px 10px;
+@mixin metin_border{
+    background-color: rgba(0,0,0,0.5);
+}
+@mixin main_font{
+    font-size: $main-fontsize;
+    font-family: 'Noto Sans', sans-serif;
+}
+@mixin flex_end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+@mixin center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@mixin metin_desc{
+    @include metin_border;
+    position: relative;
+    background-color: rgba(0,0,0,0.5);
+    *{
+        background-color: rgba(0,0,0,0.0);
+    }
+    img.decorator{
+        width: 10px;
+        position: absolute;
+    }
+    .lu,.ru{
+        top: 0;
+    }
+    .ld,.rd{
+        bottom: 0;
+    }
+    .lu,.ld{
+        left: 0;
+    }
+    .rd,.ru{
+        right: 0;
+    }
+    .ru{
+        transform: rotate(90deg);
+    }
+    .ld{
+        transform: rotate(-90deg);
+    }
+    .rd{
+        transform: rotate(180deg);
+    }
+    border: black 1px solid;
+}

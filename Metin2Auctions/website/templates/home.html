@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{%block title%} Metin2 trade {%endblock%}
+{%block style%}<link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}"> {%endblock%}
+{%block content%} 
+<div class="sorter">
+    <h2>Wyszukiwarka:</h2>
+    <form method="get">
+    <label>Wpisz nazwę przedmiotu
+    <input type="text" name="item_name"></label>
+    <button type="submit">Wyszukaj</button>
+    </form>
+    <h1>{{filter_name}}</h1>
+</div>
+<h1>Newest auctions:</h1>
+{%if auction%}
+{%for each in auction%}
+<div class="auction-container" id="auction_{{each.id}}">
+    <img class="decorator lu" src="{{url_for('static',filename='/images/corner_border.png')}}">
+    <img class="decorator ru" src="{{url_for('static',filename='/images/corner_border.png')}}">
+    <img class="decorator ld" src="{{url_for('static',filename='/images/corner_border.png')}}">
+    <img class="decorator rd" src="{{url_for('static',filename='/images/corner_border.png')}}">
+    <div class="auction-img">
+        <img src="{{url_for('static', filename='auction_images/')}}{{each.img}}" alt="">
+        <div class="auction-description">
+            {%for itm in item%}
+            {%if each.auction_type=='item'%}
+            {%if itm.auction_id==each.id%}
+            <p>Poziom ulepszenia +:{{itm.upgrade}}</p>
+            <p>Siła żywiołu:{{itm.element}}</p>
+            {% set list = itm.bonuses.split('/') %}
+            {%for sub in list%}
+                <p class="bonus">{{sub}}</p>
+            {%endfor%}
+            {%endif%}
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+    <div class="auction-describe">
+        <div class="auction-describe-header">
+            <h2>{{each.item_name}}</h2>
+            <p>{{each.informations}}</p>
+        </div>
+        <div class="auction-price">
+            {%if user.is_authenticated %}
+            <p>Actual price: {{each.cw}}KK
+                {%if each.winner%}
+                 - by {{each.winner}}
+                {%else%}
+                - be first and bid!
+                {%endif%}
+                </p>
+            <p><a class="buy-now" href="/buy-now/auction_id={{each.id}}">Buy now: {{each.kt}}KK</a></p>
+            {%else%}
+            <p><a href="/login">Log in to see price</a></p>
+            {%endif%}
+        </div>
+        {%if user.is_authenticated %}
+        <div class="auction-action">
+            <a href="">SEND MESSAGE</a>
+            <form method="POST">
+                <label>Your price: <input name="bid" type="number"></label>
+                <input style="display: none;" type="number" name="auction_id" value='{{each.id}}'>
+                <button type="submit">BID</button>
+            </form>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{%endfor%}
+{%endif%}
+{%endblock%}

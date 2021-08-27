@@ -1,0 +1,87 @@
+@import "variables.scss";
+@use "sass:math";
+@keyframes slide{
+    0%{ transform: translateY(-200px);}
+    100%{ transform: translateY(0px);}
+}
+.hide{
+    display: none;
+}
+.active{
+  transition: height 0.5s;
+  animation: slide 0.5s;
+}
+:not(.active).slide{
+    z-index: -1;
+    transform: translateY(-200px);
+    visibility: hidden;
+    transition: transform 0.7s, visibility 1s;
+}
+body{
+    @include main_font;
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: $base-color;
+    &:hover{
+        color: $third-color;
+    }
+}
+.navbar,.nav-links{
+    @include flex_end();
+}
+.navbar{
+    background-color:$primary-color ;
+    height: 50px;
+    padding: 10px 0 0 10px;
+    .nav-links{
+        width: 50%;
+        justify-content: space-evenly;
+        text-transform: uppercase;
+    }
+}
+.container{
+    padding: $basic-section-padding;
+    width: 66%;
+    margin: 0 auto;
+    @include center;
+}
+form{
+    @include center;
+    label{
+        width: 100%;
+        padding: $basic-item-padding;
+        @include center;
+        justify-content: space-between;
+        input{
+            margin-left: 10px;
+        }
+    }
+}
+.info{
+    @include center;
+    position: sticky;
+    top: 0;
+    z-index: -1;
+    &.error{
+        background-color: $error;
+    }
+    &.success{
+        background-color: $success;
+    }
+    .close{
+        position: absolute;
+        right: 100px;
+        top: 0;
+        transform: scale(2.5);
+        &:hover{
+            color: $primary-color;
+            cursor: pointer;
+        }
+    }
+}
+textarea{
+    resize: none;
+}
